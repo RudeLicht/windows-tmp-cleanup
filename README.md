@@ -1,13 +1,47 @@
-# windows-tmp-cleanup
-Automate Windows temporary file cleanup &amp; DNS cache clearing for improved system performance.
+<a name="readme-top"></a>
 
+<br />
+<div align="center">
+
+<h1 align="center">Windows temp file cleanup</h3>
+
+</div>
+
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+Automate Windows temporary file cleanup & DNS cache clearing for improved system performance.
+
+## Description
 This Python script is designed to automate the cleanup of temporary files on Windows operating systems. It targets various temporary directories commonly found on Windows, including user-specific temporary files, the Windows update download cache, and the Windows system temporary folder. Additionally, it clears the DNS cache to optimize system performance. The script prompts for user confirmation before performing cleanup actions to ensure safe and controlled execution.
 
-Usage:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Ensure you run the script with administrator privileges for effective cleanup.
-The script will prompt for confirmation before proceeding with the cleanup.
-After confirmation, it will remove temporary files and clear the DNS cache.
-The script is platform-aware and performs cleanup actions specific to Windows systems.
-Disclaimer:
-Use this script at your discretion, and ensure you have backups of any critical data before running it. It is intended for cleaning temporary files and should be used responsibly.
+
+## Installation
+
+ Clone the repo
+   ```sh
+   git clone https://github.com/rudelicht/windows-tmp-cleanup.git
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+You can directly run the script.
+```py
+python winTmpClean.py
+```
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
