@@ -3,58 +3,52 @@ import shutil
 import ctypes
 import sys
 
-
 def is_admin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
 
+def clear_temp_directory(directory_path, description):
+    try:
+        print(f"\n{description}...")
+        if os.path.exists(directory_path):
+            shutil.rmtree(directory_path, ignore_errors=True)
+            print(f"Successfully cleaned: {description}")
+        else:
+            print(f"{description} not found")
+    except Exception as e:
+        print(f"Error cleaning {description}: {e}")
 
 if is_admin():
     user_path = os.path.expanduser('~')
 
-    print("\nYou are in: "+os.getcwd())
-    os.chdir(user_path+r'''\AppData\Local\Temp''')
-    print('\n--------------------------------------------------------')
-    print("\nNow cleaning: "+os.getcwd())
+    print("\nCleaning Windows Temporary Files")
 
-    print('\nCleaning...')
-    shutil.rmtree(user_path+r'''\AppData\Local\Temp''', ignore_errors=True)
-    print('\n--------------------------------------------------------')
+    # Clear User's Temp Directory
+    clear_temp_directory(user_path + r'\AppData\Local\Temp', "User Temp Directory")
 
-    os.chdir(r'''C:\Windows\SoftwareDistribution\Download''')
+    # Clear Windows Update Download Cache
+    clear_temp_directory(r'C:\Windows\SoftwareDistribution\Download', "Windows Update Download Cache")
 
-    print("\nNow cleaning: "+os.getcwd())
+    # Clear Windows System Temp Folder
+    clear_temp_directory(r'C:\Windows\Temp', "Windows System Temp Folder")
 
-    print('\nCleaning...')
-    print('\n--------------------------------------------------------')
-    shutil.rmtree(r'''C:\Windows\SoftwareDistribution\Download''',
-                  ignore_errors=True)
-
-    os.chdir(r'''C:\Windows\Temp''')
-
-    print("\nNow cleaning: "+os.getcwd())
-
-    print('\nCleaning...')
-    print('\n--------------------------------------------------------')
-    shutil.rmtree(r'''C:\Windows\Temp''',
-                  ignore_errors=True)
-
-    print("\nNow cleaning: c:\$Recycle.Bin, TYPE Y\n")
+    # Empty Recycle Bin
+    print("\nNow emptying the Recycle Bin...")
     os.system("rd /s c:\$Recycle.Bin")
-    print('\nCleaning...')
-    print('\n--------------------------------------------------------')
+    print("Recycle Bin emptied")
 
-    print('\nJunk files have been deleted, now clearing cache...')
-    os.system('ipconfig/flushdns')
-    print('\n--------------------------------------------------------')
-    print(input('\nCleaning is done Press ENTER to close!'))
-
+    # Clear DNS Cache
+    print("\nJunk files have been deleted, now clearing DNS cache...")
+    os.system('ipconfig /flushdns')
+    print("DNS cache cleared")
+    
+    print('\nCleaning is done. Press ENTER to close!')
+    input()
 else:
     # Re-run the program with admin rights
     ctypes.windll.shell32.ShellExecuteW(
         None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
-
-# made by licht :D
+# Made by licht :D
