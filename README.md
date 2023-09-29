@@ -11,12 +11,9 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Description
 
 Automate Windows temporary file cleanup & DNS cache clearing for improved system performance.
-
-## Description
-This Python script is designed to automate the cleanup of temporary files on Windows operating systems. It targets various temporary directories commonly found on Windows, including user-specific temporary files, the Windows update download cache, and the Windows system temporary folder. Additionally, it clears the DNS cache to optimize system performance. The script prompts for user confirmation before performing cleanup actions to ensure safe and controlled execution.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
